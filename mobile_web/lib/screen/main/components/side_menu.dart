@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:reposnive/components/aniamated_circular_progress_indicator.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:reposnive/constants.dart';
 import 'package:reposnive/screen/main/components/skills.dart';
 
 import 'areaa-_info_text.dart';
+import 'coding.dart';
+import 'knowledges.dart';
 import 'my_info.dart';
 
 class SideMenu extends StatelessWidget {
@@ -35,36 +37,59 @@ class SideMenu extends StatelessWidget {
                   text: '40',
                 ),
                 Skills(),
-                SizedBox(height: defaultPadding,),
+                SizedBox(
+                  height: defaultPadding,
+                ),
                 Coding(),
+                Knowledges(),
+                Divider(),
+                SizedBox(
+                  height: defaultPadding / 2,
+                ),
+                TextButton(
+                    onPressed: () {},
+                    child: FittedBox(
+                      child: Row(
+                        children: [
+                          Text(
+                            'DOWNLOAD CV',
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .color),
+                          ),
+                          SizedBox(
+                            width: defaultPadding / 2,
+                          ),
+                          SvgPicture.asset('assets/icons/download.svg')
+                        ],
+                      ),
+                    ))
               ],
             ),
-          ))
+          )),
+          Container(
+            margin: EdgeInsets.only(top: defaultPadding),
+            color: Color(0xFF24242E),
+            child: Row(
+              children: [
+                Spacer(),
+                IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset('assets/icons/linkedin.svg')),
+                IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset('assets/icons/github.svg')),
+                IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset('assets/icons/twitter.svg')),
+                Spacer(),
+              ],
+            ),
+          )
         ],
       ),
-    );
-  }
-}
-
-class Coding extends StatelessWidget {
-  const Coding({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Divider(),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: defaultPadding),
-          child: Text(
-            "Coding",
-            style: Theme.of(context).textTheme.subtitle2,
-          ),
-        )
-      ],
     );
   }
 }

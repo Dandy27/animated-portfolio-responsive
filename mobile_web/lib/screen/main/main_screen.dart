@@ -15,6 +15,7 @@ class MainScreen extends StatelessWidget {
         child: Container(
           constraints: BoxConstraints(maxWidth: maxWidth),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 flex: 2,

@@ -4,7 +4,9 @@ import 'package:reposnive/constants.dart';
 import 'components/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
-  MainScreen({Key? key}) : super(key: key);
+  MainScreen({Key? key, required this.children}) : super(key: key);
+
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +17,17 @@ class MainScreen extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                  flex: 2,
-                  child: SideMenu()),
+                flex: 2,
+                child: SideMenu(),
+              ),
               Expanded(
                   flex: 7,
                   child: Container(
-                    color: Colors.blue,
-                    child: Column(),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [...children],
+                      ),
+                    ),
                   )),
             ],
           ),
